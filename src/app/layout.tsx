@@ -20,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Hive | The AI Coding Agent Orchestrator",
   description:
-    "Stop juggling terminal tabs. Orchestrate your AI coding agents from one window. A unified interface for Claude Code, OpenCode, and local LLMs.",
+    "Stop juggling terminal tabs. Orchestrate your AI coding agents from one window. A unified interface for Claude Code, Codex, OpenCode, and local LLMs.",
 };
 
 export default function RootLayout({

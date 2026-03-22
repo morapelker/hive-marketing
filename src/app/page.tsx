@@ -1,33 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/CopyButton";
-
-const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida/ADBb0ui8PNhhEh9et1rrJ4xE7DgoC6Kq6f_RgdrLD2dkzuavkruD_wweP9Ju-0pKw70b66s7WvUdn9GgXrOSB6xsH9IUndXlTs6es_3ep7kyvT1KL9-BCsUbFGI7sRDQUixUOkapLHRkUs0Wv4Qls60KQ0iCObtFkXgMb7pgqjWJDWebZd3D8T_C3gBckzj8WlCKyXHsCf0vGn_Po1EfEhPD5Em4KYbrlq2TaKeSHSgHnEG9KtmOZg8NRdQWtqVH3yw9Wnhn2iOscCmt1w";
+import { VideoModal } from "@/components/VideoModal";
+import {
+  getLatestRelease,
+  detectPlatform,
+  getAssetForPlatform,
+  getPlatformLabel,
+  hasAssetsForPlatform,
+} from "@/lib/github";
+import hiveIcon from "./icon.png";
 
 const BREW_COMMAND = "brew tap morapelker/hive && brew install --cask hive";
 
-export default function Home() {
+export default async function Home() {
+  const [release, requestHeaders] = await Promise.all([
+    getLatestRelease(),
+    headers(),
+  ]);
+  const ua = requestHeaders.get("user-agent") ?? "";
+  const platform = detectPlatform(ua);
+  const asset = getAssetForPlatform(release.assets, platform);
+  const platformLabel = getPlatformLabel(platform);
+  const downloadHref = asset?.url ?? release.releaseUrl;
   return (
     <>
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl">
         <div className="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <Image
-              alt="Hive Logo"
-              className="h-8 w-auto"
-              src={LOGO_URL}
-              width={120}
-              height={32}
-              unoptimized
+              alt="Hive"
+              src={hiveIcon}
+              width={28}
+              height={28}
+              className="h-7 w-7"
             />
+            <span className="text-xl font-bold font-headline tracking-tight text-on-surface">
+              Hive
+            </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a
-              className="text-[#fb923c] font-bold border-b-2 border-[#fb923c] pb-1 font-headline tracking-tight"
-              href="#"
+              className="text-[#bcb0ab] hover:text-[#e5e2e1] transition-colors font-headline tracking-tight"
+              href="https://github.com/morapelker/hive"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               GitHub
             </a>
@@ -44,9 +64,11 @@ export default function Home() {
               Blog
             </Link>
           </div>
-          <Button className="px-6 py-2 h-auto rounded-xl font-bold font-label text-base hover:scale-105 active:scale-95 transition-all">
-            Download
-          </Button>
+          <a href={downloadHref}>
+            <Button className="px-6 py-2 h-auto rounded-xl font-bold font-label text-base hover:scale-105 active:scale-95 transition-all">
+              Download
+            </Button>
+          </a>
         </div>
       </nav>
 
@@ -62,7 +84,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 mb-8">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-xs font-label font-medium tracking-wider text-on-surface-variant">
-                V1.0.4 STABLE RELEASE
+                V{release.version} STABLE RELEASE
               </span>
             </div>
 
@@ -75,50 +97,59 @@ export default function Home() {
 
             <p className="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl font-light leading-relaxed mb-12">
               Stop juggling terminal tabs. Orchestrate your AI coding agents
-              from one window. A unified interface for Claude Code, OpenCode,
-              and local LLMs.
+              from one window. A unified interface for Claude Code, Codex,
+              OpenCode, and local LLMs.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(251,146,60,0.3)] transition-all gap-3">
-                <span className="material-symbols-outlined">download</span>
-                Download for macOS (v1.0.4)
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg transition-all gap-3 bg-surface-container-high border-outline-variant/20 text-on-surface hover:bg-surface-container-highest hover:text-on-surface"
+              <a href={downloadHref}>
+                <Button className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all gap-3">
+                  <span className="material-symbols-outlined">download</span>
+                  Download for {platformLabel} (v{release.version})
+                </Button>
+              </a>
+              <a
+                href="https://github.com/morapelker/hive"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span className="material-symbols-outlined">star</span>
-                Star on GitHub
-              </Button>
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg transition-all gap-3 bg-surface-container-high border-outline-variant/20 text-on-surface hover:bg-surface-container-highest hover:text-on-surface"
+                >
+                  <span className="material-symbols-outlined">star</span>
+                  Star on GitHub
+                </Button>
+              </a>
             </div>
           </div>
 
           {/* Dashboard Mockup Preview */}
-          <div className="mt-24 w-full max-w-6xl mx-auto px-4 [perspective:1000px]">
-            <div className="relative rounded-t-2xl border-x border-t border-outline-variant/30 bg-surface-container-low p-2 shadow-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border-b border-outline-variant/10">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-error/40" />
-                  <div className="w-3 h-3 rounded-full bg-primary-fixed-dim/40" />
-                  <div className="w-3 h-3 rounded-full bg-primary/40" />
+          <VideoModal videoSrc="/hive-full-demo.mp4">
+            <div className="mt-24 w-full max-w-6xl mx-auto px-4 [perspective:1000px] cursor-pointer group/preview">
+              <div className="relative rounded-t-2xl border-x border-t border-outline-variant/30 bg-surface-container-low p-2 shadow-2xl overflow-hidden group-hover/preview:border-primary/30 transition-colors">
+                <div className="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border-b border-outline-variant/10">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-error/40" />
+                    <div className="w-3 h-3 rounded-full bg-primary-fixed-dim/40" />
+                    <div className="w-3 h-3 rounded-full bg-primary/40" />
+                  </div>
+                  <div className="mx-auto text-[10px] font-label text-on-surface-variant opacity-50 uppercase tracking-[0.2em]">
+                    Hive Orchestrator — Agent Session: Main
+                  </div>
                 </div>
-                <div className="mx-auto text-[10px] font-label text-on-surface-variant opacity-50 uppercase tracking-[0.2em]">
-                  Hive Orchestrator — Agent Session: Main
-                </div>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto rounded-b-lg opacity-90 brightness-75"
+                >
+                  <source src="/hive-full-demo.mp4" type="video/mp4" />
+                </video>
               </div>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto rounded-b-lg opacity-90 brightness-75"
-              >
-                <source src="/hive-full-demo.mp4" type="video/mp4" />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent pointer-events-none" />
             </div>
-          </div>
+          </VideoModal>
         </section>
 
         {/* Bento Grid Feature Section */}
@@ -287,100 +318,15 @@ export default function Home() {
                 macOS
               </span>
               <span className="font-headline text-2xl font-bold tracking-tighter">
-                Linux
+                Windows{!hasAssetsForPlatform(release.assets, "windows") && " (Soon)"}
               </span>
               <span className="font-headline text-2xl font-bold tracking-tighter">
-                Windows (Soon)
+                Linux{!hasAssetsForPlatform(release.assets, "linux") && " (Soon)"}
               </span>
             </div>
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-[#0e0e0e] w-full py-12 px-6 border-t border-[#4a3d3e]/20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          <div className="flex flex-col gap-4">
-            <div className="text-xl font-bold text-[#fb923c] font-headline">
-              <Image
-                alt="Hive Logo"
-                className="h-6 w-auto mb-2"
-                src={LOGO_URL}
-                width={90}
-                height={24}
-                unoptimized
-              />
-            </div>
-            <p className="text-sm text-[#bcb0ab] font-body leading-relaxed">
-              &copy; 2024 Hive Orchestrator. <br />
-              Open Source under MIT.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3">
-            <h4 className="text-on-surface font-bold text-sm uppercase tracking-widest font-label mb-2">
-              Community
-            </h4>
-            <a
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="#"
-            >
-              GitHub
-            </a>
-            <a
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="#"
-            >
-              Twitter
-            </a>
-            <a
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="#"
-            >
-              Discord
-            </a>
-          </div>
-          <div className="flex flex-col gap-3">
-            <h4 className="text-on-surface font-bold text-sm uppercase tracking-widest font-label mb-2">
-              Resources
-            </h4>
-            <Link
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="/docs"
-            >
-              Documentation
-            </Link>
-            <a
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="#"
-            >
-              Privacy
-            </a>
-            <a
-              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
-              href="#"
-            >
-              API Reference
-            </a>
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-on-surface font-bold text-sm uppercase tracking-widest font-label mb-2">
-              Stay Updated
-            </h4>
-            <div className="flex gap-2">
-              <input
-                className="bg-surface-container-low border-none rounded-lg text-sm px-4 py-2 w-full focus:ring-1 focus:ring-primary"
-                placeholder="email@hive.so"
-                type="email"
-              />
-              <Button size="icon" className="rounded-lg shrink-0">
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
