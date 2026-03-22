@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -12,14 +13,15 @@ export function CopyButton({ text }: { text: string }) {
   };
 
   return (
-    <button
+    <Button
+      variant="outline"
       onClick={handleCopy}
-      className="bg-surface-container-highest hover:bg-surface-container-high text-on-surface p-3 rounded-lg transition-all active:scale-90 flex items-center gap-2 group/copy shrink-0"
+      className="bg-surface-container-highest hover:bg-surface-container-high text-on-surface rounded-lg transition-all active:scale-90 gap-2 shrink-0 border-outline-variant/20 hover:text-on-surface"
     >
       <span className="material-symbols-outlined">
         {copied ? "check" : "content_copy"}
       </span>
       <span className="text-xs font-label">{copied ? "Copied!" : "Copy"}</span>
-    </button>
+    </Button>
   );
 }

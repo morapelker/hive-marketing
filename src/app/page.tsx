@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/CopyButton";
 
 const LOGO_URL =
   "https://lh3.googleusercontent.com/aida/ADBb0ui8PNhhEh9et1rrJ4xE7DgoC6Kq6f_RgdrLD2dkzuavkruD_wweP9Ju-0pKw70b66s7WvUdn9GgXrOSB6xsH9IUndXlTs6es_3ep7kyvT1KL9-BCsUbFGI7sRDQUixUOkapLHRkUs0Wv4Qls60KQ0iCObtFkXgMb7pgqjWJDWebZd3D8T_C3gBckzj8WlCKyXHsCf0vGn_Po1EfEhPD5Em4KYbrlq2TaKeSHSgHnEG9KtmOZg8NRdQWtqVH3yw9Wnhn2iOscCmt1w";
-
-const PREVIEW_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDQBeO97d0vSRcxKCCn-KhoAWRiCilKWe1wIp8KgehvERWSa4xz_jvAuc5_Yqk20nRIZv8RtbkDLP2-Exp8HiSXOm-KQf3L8oVa-3v3zfs-gAPYV-Qykov3T1oYwZrZDd7eNy-OXD7IMriWBHorAUb3HoQI7JHeCl6dThTZVPv8PWgMQm9Thnk903QYGzE1msaUCS-VpaS0WUvSRy4-y8jZO-8OmHnessQYfnsGerJDl35o756pQEao4CkPj_MSE65Tpd95Ye1AZPk";
 
 const BREW_COMMAND = "brew tap morapelker/hive && brew install --cask hive";
 
@@ -28,27 +26,27 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a
-              className="text-[#6bfb9a] font-bold border-b-2 border-[#6bfb9a] pb-1 font-headline tracking-tight"
+              className="text-[#fb923c] font-bold border-b-2 border-[#fb923c] pb-1 font-headline tracking-tight"
               href="#"
             >
               GitHub
             </a>
             <Link
-              className="text-[#bccabb] hover:text-[#e5e2e1] transition-colors font-headline tracking-tight"
+              className="text-[#bcb0ab] hover:text-[#e5e2e1] transition-colors font-headline tracking-tight"
               href="/docs"
             >
               Docs
             </Link>
             <Link
-              className="text-[#bccabb] hover:text-[#e5e2e1] transition-colors font-headline tracking-tight"
+              className="text-[#bcb0ab] hover:text-[#e5e2e1] transition-colors font-headline tracking-tight"
               href="/blog"
             >
               Blog
             </Link>
           </div>
-          <button className="text-on-primary px-6 py-2 rounded-xl font-bold font-label hover:scale-105 active:scale-95 transition-all bg-primary">
+          <Button className="px-6 py-2 h-auto rounded-xl font-bold font-label text-base hover:scale-105 active:scale-95 transition-all">
             Download
-          </button>
+          </Button>
         </div>
       </nav>
 
@@ -82,14 +80,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="w-full sm:w-auto flex items-center justify-center gap-3 text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(107,251,154,0.3)] transition-all group bg-primary">
+              <Button className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(251,146,60,0.3)] transition-all gap-3">
                 <span className="material-symbols-outlined">download</span>
                 Download for macOS (v1.0.4)
-              </button>
-              <button className="w-full sm:w-auto flex items-center justify-center gap-3 bg-surface-container-high border border-outline-variant/20 text-on-surface px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all group">
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full sm:w-auto h-auto px-8 py-4 rounded-xl font-bold text-lg transition-all gap-3 bg-surface-container-high border-outline-variant/20 text-on-surface hover:bg-surface-container-highest hover:text-on-surface"
+              >
                 <span className="material-symbols-outlined">star</span>
                 Star on GitHub
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -106,15 +107,16 @@ export default function Home() {
                   Hive Orchestrator — Agent Session: Main
                 </div>
               </div>
-              <Image
-                alt="Hive UI Preview"
-                className="w-full h-auto rounded-b-lg opacity-90 brightness-75 grayscale-[0.2]"
-                src={PREVIEW_URL}
-                width={1200}
-                height={675}
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-b-lg opacity-90 brightness-75"
+              >
+                <source src="/hive-full-demo.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </section>
@@ -296,10 +298,10 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#0e0e0e] w-full py-12 px-6 border-t border-[#3d4a3e]/20">
+      <footer className="bg-[#0e0e0e] w-full py-12 px-6 border-t border-[#4a3d3e]/20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           <div className="flex flex-col gap-4">
-            <div className="text-xl font-bold text-[#6bfb9a] font-headline">
+            <div className="text-xl font-bold text-[#fb923c] font-headline">
               <Image
                 alt="Hive Logo"
                 className="h-6 w-auto mb-2"
@@ -309,7 +311,7 @@ export default function Home() {
                 unoptimized
               />
             </div>
-            <p className="text-sm text-[#bccabb] font-body leading-relaxed">
+            <p className="text-sm text-[#bcb0ab] font-body leading-relaxed">
               &copy; 2024 Hive Orchestrator. <br />
               Open Source under MIT.
             </p>
@@ -319,19 +321,19 @@ export default function Home() {
               Community
             </h4>
             <a
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="#"
             >
               GitHub
             </a>
             <a
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="#"
             >
               Twitter
             </a>
             <a
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="#"
             >
               Discord
@@ -342,19 +344,19 @@ export default function Home() {
               Resources
             </h4>
             <Link
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="/docs"
             >
               Documentation
             </Link>
             <a
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="#"
             >
               Privacy
             </a>
             <a
-              className="text-[#bccabb] hover:text-[#6bfb9a] transition-colors text-sm font-body"
+              className="text-[#bcb0ab] hover:text-[#fb923c] transition-colors text-sm font-body"
               href="#"
             >
               API Reference
@@ -370,11 +372,11 @@ export default function Home() {
                 placeholder="email@hive.so"
                 type="email"
               />
-              <button className="bg-primary text-on-primary-fixed p-2 rounded-lg">
+              <Button size="icon" className="rounded-lg shrink-0">
                 <span className="material-symbols-outlined text-sm">
                   arrow_forward
                 </span>
-              </button>
+              </Button>
             </div>
           </div>
         </div>
