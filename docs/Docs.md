@@ -13,7 +13,6 @@ Welcome to Hive! This guide will help you get the most out of Hive's powerful fe
 - [Session History](#session-history)
 - [Run Scripts](#run-scripts)
 - [Connections](#connections)
-- [File Management](#file-management)
 - [Git Operations](#git-operations)
 - [Pull Requests](#pull-requests)
 - [GitHub Comments](#github-comments)
@@ -245,33 +244,6 @@ You can connect as many worktrees as you need - there's no limit on the number o
 1. **Connect Related Work** - Link branches that share context
 2. **Maintain Main Connection** - Keep main branch connected for reference
 3. **Clean Up Stale Connections** - Disconnect archived worktrees
-
-## File Management
-
-### File Tree
-
-The file tree shows:
-- 📁 Folders (expandable)
-- 📄 Files (click to open)
-- 🟢 New files (git status)
-- 🟡 Modified files (git status)
-- 🔴 Deleted files (git status)
-
-### File Operations
-
-- **Open**: Click any file to view it
-- **Edit**: Double-click to open in the integrated editor
-- **Search**: `Cmd+D` for quick file search
-- **Filter**: Type in the filter box to narrow results
-
-### Integrated Editor
-
-Hive includes a full Monaco editor (VS Code's editor):
-- Syntax highlighting
-- Code completion
-- Go-to-definition
-- Find and replace
-- Multiple cursors
 
 ## Git Operations
 

@@ -59,7 +59,6 @@ export default defineConfig({
           { text: 'Build & Plan Mode', link: '/GUIDE#build-plan-mode' },
           { text: 'Session History', link: '/GUIDE#session-history' },
           { text: 'Run Scripts', link: '/GUIDE#run-scripts' },
-          { text: 'File Management', link: '/GUIDE#file-management' },
           { text: 'Git Operations', link: '/GUIDE#git-operations' },
           { text: 'Create Pull Requests', link: '/GUIDE#pull-requests' },
           { text: 'Settings', link: '/GUIDE#settings' }
