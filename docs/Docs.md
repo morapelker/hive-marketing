@@ -146,21 +146,6 @@ Always review what the AI wants to do before approving!
 - **OpenCode**: Full undo/redo support with `Cmd+Z` / `Cmd+Shift+Z`
 - **Claude Code**: Undo only (rewind to previous state)
 
-### Session Management
-
-- **Pause**: Temporarily stop the session
-- **Resume**: Continue a paused session
-- **Archive**: Save the session for later reference
-- **Export**: Export chat history as markdown
-
-### Best Practices
-
-1. **Be Specific**: Clear instructions get better results
-2. **Review Changes**: Always review AI-generated code
-3. **Test Incrementally**: Test changes as you go
-4. **Use Undo**: Don't hesitate to undo if something goes wrong
-5. **Save Context**: Archive important sessions for reference
-
 ## Connections
 
 Hive's Worktree Connections feature allows you to link two worktrees together, creating powerful workflows for development across multiple branches.
