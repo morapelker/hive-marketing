@@ -1,0 +1,229 @@
+/**
+ * Hive Documentation Custom Theme
+ * Supports both light and dark modes with orange accent
+ */
+
+:root {
+  /* Hive brand colors - Orange theme (works in both light and dark) */
+  --vp-c-brand-1: lab(64.207% 42.8074 76.4887);
+  --vp-c-brand-2: lab(58% 45 80);
+  --vp-c-brand-3: lab(52% 48 84);
+
+  /* Typography */
+  --vp-font-family-base: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+  --vp-font-family-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* Dark mode colors */
+.dark {
+  --vp-c-bg: #0a0a0a;
+  --vp-c-bg-soft: #111;
+  --vp-c-bg-mute: #1a1a1a;
+  --vp-c-bg-alt: #0a0a0a;
+
+  --vp-c-text-1: #e0e0e0;
+  --vp-c-text-2: #888;
+  --vp-c-text-3: #666;
+
+  --vp-c-divider: #222;
+  --vp-c-border: #333;
+}
+
+/* Custom scrollbar - Dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Light mode scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Code blocks - Dark mode */
+.dark .vp-doc div[class*='language-'] {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+/* Code blocks - Light mode */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+}
+
+.vp-doc div[class*='language-'] code {
+  font-family: var(--vp-font-family-mono);
+}
+
+/* Inline code - Dark mode */
+.dark .vp-doc :not(pre) > code {
+  background-color: #111;
+  color: var(--vp-c-brand-1);
+}
+
+/* Inline code - Light mode */
+.vp-doc :not(pre) > code {
+  color: var(--vp-c-brand-1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: var(--vp-font-family-mono);
+}
+
+/* Links */
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration: underline;
+}
+
+/* Tables - Dark mode */
+.dark .vp-doc table {
+  border: 1px solid #333;
+}
+
+.dark .vp-doc th {
+  background: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.dark .vp-doc td {
+  border: 1px solid #333;
+}
+
+/* Blockquotes - Dark mode */
+.dark .vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-1);
+  background-color: #111;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+/* Blockquotes - Light mode */
+.vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-1);
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+/* Custom containers */
+.vp-doc .tip,
+.vp-doc .warning,
+.vp-doc .danger {
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.vp-doc .tip {
+  border: 1px solid var(--vp-c-brand-1);
+}
+
+.dark .vp-doc .tip {
+  background-color: rgba(249, 115, 22, 0.1);
+}
+
+/* Sidebar - Dark mode */
+.dark .VPSidebar {
+  background-color: #111;
+  border-right: 1px solid #222;
+}
+
+.dark .VPSidebarItem.is-link:hover {
+  background-color: #1a1a1a;
+}
+
+.dark .VPSidebarItem.is-active {
+  background-color: #1a1a1a;
+}
+
+/* Sidebar - Light/Dark shared */
+.VPSidebarItem.is-active {
+  color: var(--vp-c-brand-1);
+}
+
+/* Navigation - Dark mode */
+.dark .VPNav {
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #222;
+}
+
+/* Footer - Dark mode */
+.dark .VPFooter {
+  background-color: #111;
+  border-top: 1px solid #222;
+}
+
+/* Home page hero */
+.VPHero .name {
+  background: linear-gradient(120deg, currentColor 30%, var(--vp-c-brand-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.VPButton.brand {
+  background-color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+.dark .VPButton.brand {
+  color: #0a0a0a;
+}
+
+.VPButton.brand:hover {
+  background-color: var(--vp-c-brand-2);
+}
+
+/* Alt buttons - Dark mode */
+.dark .VPButton.alt {
+  background-color: #111;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+.VPButton.alt:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+/* Search - Dark mode */
+.dark .VPLocalSearchBox {
+  background-color: #111;
+  border: 1px solid #333;
+}
+
+/* Adjust font for better readability */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}

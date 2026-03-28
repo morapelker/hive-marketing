@@ -1,0 +1,7 @@
+# VitePress build output
+.vitepress/cache
+.vitepress/dist
+
+# Temporary files
+*.log
+.DS_Store
