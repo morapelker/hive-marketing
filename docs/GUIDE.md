@@ -241,76 +241,6 @@ Worktree connections create bridges between branches, allowing you to:
 
 You can connect as many worktrees as you need - there's no limit on the number of connections.
 
-### Advanced Features
-
-#### Smart Diff View
-Compare files between connected worktrees:
-1. Select a file in your current worktree
-2. Click "Compare with Connected"
-3. See a side-by-side diff
-4. Apply changes selectively
-
-#### AI Session Sharing
-AI sessions can access both worktrees:
-```
-"Look at the implementation in the connected worktree and apply the same pattern here"
-```
-
-#### Connection Persistence
-Connections are remembered:
-- Survive Hive restarts
-- Restore when worktrees are reopened
-- Can be saved as connection profiles
-
-#### Connection Templates
-Save common connection patterns:
-- "Feature + Main" template
-- "Frontend + Backend" template
-- "Bug Fix + Production" template
-
-### Best Practices
-
-1. **Connect Related Work** - Link branches that share context
-2. **Use for Reviews** - Connect author and reviewer worktrees
-3. **Maintain Main Connection** - Keep main branch connected for reference
-4. **Clean Up Stale Connections** - Disconnect archived worktrees
-5. **Name Connections** - Give meaningful names to connection profiles
-
-### Tips and Tricks
-
-#### Visual Indicators
-Look for these connection indicators:
-- 🔗 in the sidebar - Worktree has connections
-- Badge number - Shows connection count
-- Color coding - Active (green), standby (yellow)
-
-## File Management
-
-### File Tree
-
-The file tree shows:
-- 📁 Folders (expandable)
-- 📄 Files (click to open)
-- 🟢 New files (git status)
-- 🟡 Modified files (git status)
-- 🔴 Deleted files (git status)
-
-### File Operations
-
-- **Open**: Click any file to view it
-- **Edit**: Double-click to open in the integrated editor
-- **Search**: `Cmd+D` for quick file search
-- **Filter**: Type in the filter box to narrow results
-
-### Integrated Editor
-
-Hive includes a full Monaco editor (VS Code's editor):
-- Syntax highlighting
-- Code completion
-- Go-to-definition
-- Find and replace
-- Multiple cursors
-
 ## Git Operations
 
 ### Viewing Changes
@@ -410,11 +340,6 @@ Press **`Cmd+,`** or click the settings icon to open the settings panel.
 - **Project Scripts**: Define run commands for each project
 - **Environment Variables**: Set environment vars for scripts
 - **Auto-run**: Run scripts automatically on worktree open
-
-#### Integrations
-- **GitHub**: Connect your GitHub account for PR features
-- **Slack**: Set up Slack commands and notifications
-- **Terminal**: Choose between built-in or external terminal
 
 #### Keyboard Shortcuts
 - Customize any keyboard shortcut
