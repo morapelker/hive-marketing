@@ -10,9 +10,7 @@ Stay up to date with the latest features, improvements, and bug fixes in Hive.
 
 <Badge type="info">March 28, 2026</Badge>
 
-Launched comprehensive documentation site with VitePress. Features include dark/light modes, powerful local search, mobile responsive design, and complete guides for all Hive features.
-
-[View Docs](/Docs) · [User Guide](/GUIDE) · [FAQ](/FAQ)
+New documentation site with guides, FAQ, and keyboard shortcuts. [View Docs](/Docs)
 
 ---
 
