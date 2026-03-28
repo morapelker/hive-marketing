@@ -9,12 +9,16 @@ Welcome to Hive! This guide will help you get the most out of Hive's powerful fe
 - [Working with Projects](#working-with-projects)
 - [Managing Worktrees](#managing-worktrees)
 - [AI Coding Sessions](#ai-coding-sessions)
+- [Build & Plan Mode](#build-plan-mode)
+- [Session History](#session-history)
+- [Run Scripts](#run-scripts)
 - [Connections](#connections)
 - [File Management](#file-management)
 - [Git Operations](#git-operations)
-- [Using Spaces](#using-spaces)
+- [Pull Requests](#pull-requests)
+- [GitHub Comments](#github-comments)
+- [Settings](#settings)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Tips and Tricks](#tips-and-tricks)
 
 ## Getting Started
 
@@ -84,7 +88,7 @@ Right-click on any project to:
 
 ### Project Organization
 
-Projects can be organized into Spaces (see [Using Spaces](#using-spaces)) and pinned for quick access.
+Projects can be pinned for quick access and filtered for easy navigation.
 
 ## Managing Worktrees
 
@@ -93,13 +97,12 @@ Projects can be organized into Spaces (see [Using Spaces](#using-spaces)) and pi
 1. Select a project
 2. Click **"New Worktree"**
 3. Choose an existing branch or create a new one
-4. Hive automatically assigns a unique city-based name (e.g., "tokyo", "paris")
+4. Hive automatically assigns a unique name from dog or cat breeds (e.g., "labrador", "persian", "beagle")
 
 ### Worktree Naming
 
 Hive uses a clever naming system:
-- Each worktree gets a city name from a pool of 200+ cities
-- If a city is taken, it adds a version suffix (-v1, -v2, etc.)
+- Each worktree gets a unique dog or cat breed name (e.g., "labrador", "persian", "beagle")
 - You can rename worktrees after creation
 
 ### Worktree Actions
@@ -146,13 +149,82 @@ Always review what the AI wants to do before approving!
 - **OpenCode**: Full undo/redo support with `Cmd+Z` / `Cmd+Shift+Z`
 - **Claude Code**: Undo only (rewind to previous state)
 
+## Build & Plan Mode
+
+Hive offers two distinct modes for working with AI coding assistants:
+
+### Build Mode
+In Build mode, the AI actively writes and modifies code:
+- Creates and edits files
+- Runs commands
+- Makes structural changes
+- Implements features
+
+### Plan Mode
+In Plan mode, the AI acts as a consultant:
+- Suggests approaches without modifying code
+- Provides architectural guidance
+- Answers questions
+- Reviews existing code
+
+### Switching Modes
+Press **Tab** to toggle between Build and Plan modes at any time. The current mode is displayed in the chat interface.
+
+### When to Use Each Mode
+- **Use Build** when you want the AI to implement changes
+- **Use Plan** when you need guidance before committing to changes
+- **Switch freely** as your needs change during a session
+
+## Session History
+
+Access all your past AI coding sessions with Session History.
+
+### Opening Session History
+Press **`Cmd+K`** to open the Session History panel, which shows:
+- All past sessions organized by date
+- Session summaries and titles
+- Worktree and project context
+- Search and filter options
+
+### Searching Sessions
+- Type to search across all session content
+- Filter by project, worktree, or date
+- View session transcripts
+- Resume archived sessions
+
+### Benefits
+- Reference past solutions
+- Track your coding journey
+- Learn from previous AI interactions
+- Resume unfinished work
+
+## Run Scripts
+
+Execute project scripts directly from Hive with the Run feature.
+
+### Setting Up Run Scripts
+1. Open Settings (`Cmd+,`)
+2. Navigate to your project settings
+3. Define your run script (e.g., `npm start`, `python app.py`)
+
+### Running Your Project
+- Press **`Cmd+R`** to start or stop the run script
+- Output appears in the integrated terminal
+- The run button shows current status (running/stopped)
+
+### Use Cases
+- Development servers
+- Watch modes
+- Test runners
+- Build processes
+
 ## Connections
 
-Hive's Worktree Connections feature allows you to link two worktrees together, creating powerful workflows for development across multiple branches.
+Hive's Worktree Connections feature allows you to link multiple worktrees together, creating powerful workflows for development across multiple branches.
 
 ### Understanding Worktree Connections
 
-Worktree connections create a bridge between two branches, allowing you to:
+Worktree connections create bridges between branches, allowing you to:
 - View and reference code from another branch while working
 - Share AI session context across branches
 - Compare implementations side-by-side
@@ -162,127 +234,17 @@ Worktree connections create a bridge between two branches, allowing you to:
 
 1. Open a worktree (your "source")
 2. Click the **Connections** icon (🔌) in the toolbar
-3. Select **"Connect to Worktree"**
+3. Select **"Connect to"**
 4. Choose the target worktree from the list
 5. The connection is established immediately
 
-### Connection Types
-
-#### Reference Connections
-Keep another branch visible for reference:
-- Main branch while working on features
-- Previous implementation during refactors
-- Documentation branch while coding
-
-#### Collaboration Connections
-Work on related features simultaneously:
-- Frontend and backend branches
-- API and client implementations
-- Shared library and consumer branches
-
-#### Comparison Connections
-Compare different approaches:
-- Performance optimizations
-- Alternative implementations
-- Before/after refactoring
-
-### Using Connected Worktrees
-
-#### The Connection Panel
-When worktrees are connected, you'll see:
-- **File Browser** - Browse files from the connected worktree
-- **Changes View** - See what's different in the connected branch
-- **Quick Actions** - Switch, diff, or copy between worktrees
-- **Status Bar** - Connection health and sync status
-
-#### Navigating Between Connected Worktrees
-- Click the connection indicator to switch
-- Use `Cmd+Shift+W` to toggle between connected worktrees
-- Drag files from one worktree to another
-- Open files from both worktrees side-by-side
-
-#### Sharing Context
-Connected worktrees share:
-- File references (read-only by default)
-- AI session context (when enabled)
-- Terminal output (optional)
-- Git status information
-
-### Advanced Features
-
-#### Smart Diff View
-Compare files between connected worktrees:
-1. Select a file in your current worktree
-2. Click "Compare with Connected"
-3. See a side-by-side diff
-4. Apply changes selectively
-
-#### AI Session Sharing
-AI sessions can access both worktrees:
-```
-"Look at the implementation in the connected worktree and apply the same pattern here"
-```
-
-#### Connection Persistence
-Connections are remembered:
-- Survive Hive restarts
-- Restore when worktrees are reopened
-- Can be saved as connection profiles
-
-#### Connection Templates
-Save common connection patterns:
-- "Feature + Main" template
-- "Frontend + Backend" template
-- "Bug Fix + Production" template
-
-### Connection Management
-
-#### Connection States
-- 🟢 **Active** - Both worktrees open and synced
-- 🟡 **Standby** - One worktree closed but connection saved
-- 🔴 **Broken** - Target worktree archived or deleted
-- 🔄 **Syncing** - Updating file references
-
-#### Multiple Connections
-A worktree can connect to multiple others:
-- Maximum of 3 connections per worktree
-- Each connection has its own panel
-- Switch between connections with tabs
-
-#### Disconnecting
-To disconnect worktrees:
-1. Click the connection icon
-2. Select "Disconnect"
-3. Or use `Cmd+Shift+D` shortcut
+You can connect as many worktrees as you need - there's no limit on the number of connections.
 
 ### Best Practices
 
 1. **Connect Related Work** - Link branches that share context
-2. **Use for Reviews** - Connect author and reviewer worktrees
-3. **Maintain Main Connection** - Keep main branch connected for reference
-4. **Clean Up Stale Connections** - Disconnect archived worktrees
-5. **Name Connections** - Give meaningful names to connection profiles
-
-### Tips and Tricks
-
-#### Quick Connection Workflow
-1. Press `Cmd+K` then `C` to open connection dialog
-2. Type partial worktree name
-3. Press Enter to connect
-4. Use `Cmd+Option+W` to switch
-
-#### Connection Shortcuts
-- `Cmd+K C` - Connect worktrees (Cmd+K then C)
-- `Cmd+Option+W` - Switch between connected
-- `Cmd+K D` - Disconnect (Cmd+K then D)
-- `Cmd+Option+D` - Diff with connected
-
-#### Visual Indicators
-Look for these connection indicators:
-- 🔗 in the sidebar - Worktree has connections
-- Badge number - Shows connection count
-- Color coding - Active (green), standby (yellow)
-- Animation - Pulsing when syncing
+2. **Maintain Main Connection** - Keep main branch connected for reference
+3. **Clean Up Stale Connections** - Disconnect archived worktrees
 
 ## File Management
 
@@ -299,7 +261,7 @@ The file tree shows:
 
 - **Open**: Click any file to view it
 - **Edit**: Double-click to open in the integrated editor
-- **Search**: `Cmd+P` for quick file search
+- **Search**: `Cmd+D` for quick file search
 - **Filter**: Type in the filter box to narrow results
 
 ### Integrated Editor
@@ -325,15 +287,16 @@ Click any file to see its diff.
 ### Committing Changes
 
 1. Stage files by clicking the "+" icon
-2. Enter a commit message
-3. Click "Commit" or press `Cmd+Enter`
+2. Enter a commit message (press `Cmd+Shift+C` to focus the commit form)
+3. Click "Commit" or press `Cmd+Enter` when in the message field
 
 ### Branch Operations
 
 - **Create Branch**: Right-click on worktree → "New Branch"
 - **Switch Branch**: Not needed! Each worktree has its own branch
 - **Merge**: Use the git panel or terminal
-- **Push/Pull**: Available in the git panel
+- **Push**: Press `Cmd+Shift+P` or use the git panel
+- **Pull**: Press `Cmd+Shift+L` or use the git panel
 
 ### Viewing History
 
@@ -341,22 +304,65 @@ Click any file to see its diff.
 - Click any commit to see its changes
 - Search history with `Cmd+F`
 
-## Using Spaces
+## Pull Requests
 
-Spaces help organize related projects and worktrees.
+Create and manage pull requests directly from Hive.
 
-### Creating a Space
+### Creating a Pull Request
 
-1. Click "New Space" button
-2. Name your space (e.g., "Work", "Personal", "Open Source")
-3. Drag projects into the space
+1. Make sure your changes are committed and pushed
+2. Click the **"Create PR"** button in the git panel
+3. Fill in the PR title and description
+4. Select the target branch
+5. Click "Create" to open the pull request on GitHub
 
-### Space Benefits
+### Review Button
 
-- **Organization**: Group related work
-- **Quick Switching**: `Cmd+1-9` to switch spaces
-- **Isolation**: Different spaces for different contexts
-- **Pinning**: Pin important items within each space
+When your worktree is linked to an existing pull request:
+- The **"Review"** button appears in the toolbar
+- Click it to view the PR on GitHub
+- See comments, reviews, and CI status
+- Sync changes back to your worktree
+
+## GitHub Comments
+
+When your worktree is linked to a pull request, Hive displays inline PR comments next to the relevant code, helping you stay in context while addressing feedback.
+
+## Settings
+
+Customize Hive to match your workflow.
+
+### Opening Settings
+
+Press **`Cmd+,`** or click the settings icon to open the settings panel.
+
+### Key Settings
+
+#### General
+- **Theme**: Choose light or dark mode
+- **Editor Font**: Customize code font and size
+- **Worktree Names**: Choose between dog or cat breeds
+
+#### AI Providers
+- **OpenCode**: Configure OpenCode SDK settings
+- **Claude Code**: Set up Anthropic API key
+- **Codex**: Configure OpenAI Codex access
+- **Default Provider**: Choose which AI to use by default
+
+#### Git
+- **Auto-fetch**: Automatically fetch from remote
+- **Auto-push**: Push after every commit
+- **Commit Signing**: Configure GPG signing
+
+#### Run Scripts
+- **Project Scripts**: Define run commands for each project
+- **Environment Variables**: Set environment vars for scripts
+- **Auto-run**: Run scripts automatically on worktree open
+
+#### Keyboard Shortcuts
+- Customize any keyboard shortcut
+- Reset to defaults
+- Export/import shortcut configurations
 
 ## Keyboard Shortcuts
 
@@ -364,80 +370,33 @@ Spaces help organize related projects and worktrees.
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd+K` | Open command palette |
-| `Cmd+P` | Quick file search |
-| `Cmd+Shift+P` | Quick project search |
-| `Cmd+N` | New worktree |
-| `Cmd+Shift+N` | New session |
-| `Cmd+,` | Open settings |
-| `Cmd+1-9` | Switch to space 1-9 |
-| `Cmd+0` | Show all spaces |
+| `Cmd+P` | Command Palette |
+| `Cmd+K` | Session History |
+| `Cmd+D` | Search Files |
+| `Cmd+G` | Filter Projects |
+| `Cmd+T` | New Session |
+| `Cmd+Shift+N` | New Worktree |
+| `Cmd+R` | Run/Stop Project Script |
+| `Cmd+,` | Open Settings |
+| `Tab` | Toggle Build/Plan Mode |
+| `Alt+T` | Cycle Model Variant |
 
-### Editor Shortcuts
+### Sidebar Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd+S` | Save file |
-| `Cmd+Z` | Undo |
-| `Cmd+Shift+Z` | Redo |
-| `Cmd+F` | Find in file |
-| `Cmd+Shift+F` | Find in workspace |
-| `Cmd+D` | Select next occurrence |
-| `F12` | Go to definition |
+| `Cmd+B` | Toggle Left Sidebar |
+| `Cmd+Shift+B` | Toggle Right Sidebar |
+| `Cmd+1` | Focus Left Sidebar |
+| `Cmd+2` | Focus Main Pane |
 
 ### Git Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd+Enter` | Commit (when in message field) |
-| `Cmd+Shift+S` | Stage all changes |
-| `Cmd+Shift+U` | Unstage all changes |
-
-## Tips and Tricks
-
-### Productivity Tips
-
-1. **Use City Names**: Remember worktrees by their city names instead of branch names
-2. **Pin Favorites**: Pin frequently used worktrees for quick access
-3. **Keyboard Navigation**: Master `Cmd+K` for speed
-4. **Multiple Sessions**: Run different AI sessions in different worktrees
-5. **Quick Switch**: Use `Cmd+Tab` within Hive to switch worktrees
-
-### Advanced Features
-
-#### Custom Scripts
-Create setup scripts that run when creating new worktrees:
-1. Settings → Scripts
-2. Add commands like `npm install`, `bundle install`, etc.
-3. Scripts run automatically for new worktrees
-
-#### Terminal Integration
-- Each worktree can have its own terminal session
-- Terminals persist across Hive restarts
-- Use `Cmd+T` to toggle terminal
-
-#### LSP Support
-Hive includes Language Server Protocol support:
-- TypeScript, Python, Go, Rust, and more
-- Automatic language server detection
-- Per-worktree isolation
-
-### Troubleshooting
-
-#### Worktree Won't Create
-- Ensure you have git 2.20+ installed
-- Check available disk space
-- Verify repository isn't corrupted
-
-#### AI Session Not Responding
-- Check your internet connection
-- Verify API keys in settings
-- Try switching AI providers
-
-#### Performance Issues
-- Limit open worktrees to 10-15
-- Close unused file tabs
-- Disable unused language servers
+| `Cmd+Shift+C` | Focus Commit Form |
+| `Cmd+Shift+P` | Push to Remote |
+| `Cmd+Shift+L` | Pull from Remote |
 
 ## Next Steps
 
@@ -445,8 +404,9 @@ Now that you understand the basics:
 
 1. Set up your first project and create multiple worktrees
 2. Try an AI coding session with a simple task
-3. Organize your work with Spaces
-4. Customize settings to your preference
-5. Explore keyboard shortcuts for speed
+3. Experiment with Build and Plan modes
+4. Connect related worktrees for better context
+5. Customize settings to your preference
+6. Explore keyboard shortcuts for speed
 
 Happy coding with Hive! 🐝

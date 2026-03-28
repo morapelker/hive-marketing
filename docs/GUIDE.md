@@ -97,13 +97,12 @@ Projects can be pinned for quick access and filtered for easy navigation.
 1. Select a project
 2. Click **"New Worktree"**
 3. Choose an existing branch or create a new one
-4. Hive automatically assigns a unique city-based name (e.g., "tokyo", "paris")
+4. Hive automatically assigns a unique name from dog or cat breeds (e.g., "labrador", "persian", "beagle")
 
 ### Worktree Naming
 
 Hive uses a clever naming system:
-- Each worktree gets a dog or cat breed name (e.g., "labrador", "persian", "beagle")
-- You can change the naming scheme in settings
+- Each worktree gets a unique dog or cat breed name (e.g., "labrador", "persian", "beagle")
 - You can rename worktrees after creation
 
 ### Worktree Actions
@@ -241,48 +240,11 @@ Worktree connections create bridges between branches, allowing you to:
 
 You can connect as many worktrees as you need - there's no limit on the number of connections.
 
-### Advanced Features
-
-#### Smart Diff View
-Compare files between connected worktrees:
-1. Select a file in your current worktree
-2. Click "Compare with Connected"
-3. See a side-by-side diff
-4. Apply changes selectively
-
-#### AI Session Sharing
-AI sessions can access both worktrees:
-```
-"Look at the implementation in the connected worktree and apply the same pattern here"
-```
-
-#### Connection Persistence
-Connections are remembered:
-- Survive Hive restarts
-- Restore when worktrees are reopened
-- Can be saved as connection profiles
-
-#### Connection Templates
-Save common connection patterns:
-- "Feature + Main" template
-- "Frontend + Backend" template
-- "Bug Fix + Production" template
-
 ### Best Practices
 
 1. **Connect Related Work** - Link branches that share context
-2. **Use for Reviews** - Connect author and reviewer worktrees
-3. **Maintain Main Connection** - Keep main branch connected for reference
-4. **Clean Up Stale Connections** - Disconnect archived worktrees
-5. **Name Connections** - Give meaningful names to connection profiles
-
-### Tips and Tricks
-
-#### Visual Indicators
-Look for these connection indicators:
-- 🔗 in the sidebar - Worktree has connections
-- Badge number - Shows connection count
-- Color coding - Active (green), standby (yellow)
+2. **Maintain Main Connection** - Keep main branch connected for reference
+3. **Clean Up Stale Connections** - Disconnect archived worktrees
 
 ## File Management
 
@@ -364,21 +326,7 @@ When your worktree is linked to an existing pull request:
 
 ## GitHub Comments
 
-When your worktree is linked to a pull request, Hive displays GitHub comments inline.
-
-### Viewing Comments
-
-- Comments appear next to the relevant code
-- Click a comment to see the full conversation
-- Reply to comments directly from Hive
-- Resolve conversations when addressed
-
-### Benefits
-
-- Stay in context while coding
-- Address feedback without switching windows
-- Track which comments you've handled
-- Keep your workflow smooth
+When your worktree is linked to a pull request, Hive displays inline PR comments next to the relevant code, helping you stay in context while addressing feedback.
 
 ## Settings
 
@@ -393,7 +341,7 @@ Press **`Cmd+,`** or click the settings icon to open the settings panel.
 #### General
 - **Theme**: Choose light or dark mode
 - **Editor Font**: Customize code font and size
-- **Worktree Names**: Choose between dog/cat breeds, cities, or custom naming
+- **Worktree Names**: Choose between dog or cat breeds
 
 #### AI Providers
 - **OpenCode**: Configure OpenCode SDK settings
@@ -410,11 +358,6 @@ Press **`Cmd+,`** or click the settings icon to open the settings panel.
 - **Project Scripts**: Define run commands for each project
 - **Environment Variables**: Set environment vars for scripts
 - **Auto-run**: Run scripts automatically on worktree open
-
-#### Integrations
-- **GitHub**: Connect your GitHub account for PR features
-- **Slack**: Set up Slack commands and notifications
-- **Terminal**: Choose between built-in or external terminal
 
 #### Keyboard Shortcuts
 - Customize any keyboard shortcut
