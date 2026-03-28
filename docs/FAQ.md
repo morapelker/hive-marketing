@@ -57,7 +57,7 @@ Archiving a worktree:
 ### Can I delete branches through Hive?
 Yes, use the "Unbranch" option to remove both the worktree and its associated branch.
 
-### Why do worktrees have city names?
+### Why do worktrees have unique names?
 Hive uses dog and cat breed names to make worktrees memorable and fun. It's easier to remember "the Labrador worktree" than "feature/user-auth-refactor-v2". You can change the naming scheme in settings.
 
 ## Connections

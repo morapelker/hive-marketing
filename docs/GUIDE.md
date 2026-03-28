@@ -97,7 +97,7 @@ Projects can be pinned for quick access and filtered for easy navigation.
 1. Select a project
 2. Click **"New Worktree"**
 3. Choose an existing branch or create a new one
-4. Hive automatically assigns a unique city-based name (e.g., "tokyo", "paris")
+4. Hive automatically assigns a unique name (e.g., "labrador", "persian", "beagle")
 
 ### Worktree Naming
 
