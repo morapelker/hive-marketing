@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/CopyButton";
 import { VideoModal } from "@/components/VideoModal";
+import { MobileMenu } from "@/components/MobileMenu";
 import {
   getLatestRelease,
   detectPlatform,
@@ -28,7 +29,7 @@ export default async function Home() {
   return (
     <>
       {/* TopNavBar */}
-      <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-[60] bg-surface/80 backdrop-blur-xl">
         <div className="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
           <div className="flex items-center gap-2">
             <Image
@@ -64,11 +65,14 @@ export default async function Home() {
               Blog
             </Link>
           </div>
-          <a href={downloadHref}>
-            <Button className="px-6 py-2 h-auto rounded-xl font-bold font-label text-base hover:scale-105 active:scale-95 transition-all">
-              Download
-            </Button>
-          </a>
+          <div className="flex items-center gap-4">
+            <a href={downloadHref} className="hidden sm:block">
+              <Button className="px-6 py-2 h-auto rounded-xl font-bold font-label text-base hover:scale-105 active:scale-95 transition-all">
+                Download
+              </Button>
+            </a>
+            <MobileMenu />
+          </div>
         </div>
       </nav>
 
