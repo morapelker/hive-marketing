@@ -25,6 +25,9 @@ export default async function Home() {
   const asset = getAssetForPlatform(release.assets, platform);
   const platformLabel = getPlatformLabel(platform);
   const downloadHref = asset?.url ?? release.releaseUrl;
+  const macAsset = getAssetForPlatform(release.assets, "macos-arm");
+  const winAsset = getAssetForPlatform(release.assets, "windows");
+  const linuxAsset = getAssetForPlatform(release.assets, "linux");
   return (
     <>
       {/* TopNavBar */}
@@ -314,15 +317,15 @@ export default async function Home() {
               </div>
             </div>
             <div className="mt-16 flex flex-wrap justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-              <span className="font-headline text-2xl font-bold tracking-tighter">
+              <a href={macAsset?.url ?? release.releaseUrl} className="font-headline text-2xl font-bold tracking-tighter hover:underline">
                 macOS
-              </span>
-              <span className="font-headline text-2xl font-bold tracking-tighter">
+              </a>
+              <a href={winAsset?.url ?? release.releaseUrl} className="font-headline text-2xl font-bold tracking-tighter hover:underline">
                 Windows{!hasAssetsForPlatform(release.assets, "windows") && " (Soon)"}
-              </span>
-              <span className="font-headline text-2xl font-bold tracking-tighter">
-                Linux{!hasAssetsForPlatform(release.assets, "linux") && " (Soon)"}
-              </span>
+              </a>
+              <a href={linuxAsset?.url ?? release.releaseUrl} className="font-headline text-2xl font-bold tracking-tighter hover:underline">
+                Linux
+              </a>
             </div>
           </div>
         </section>
