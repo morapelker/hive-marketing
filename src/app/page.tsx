@@ -15,7 +15,7 @@ import {
 import { WindowChrome } from "@/components/WindowChrome";
 import hiveIcon from "./icon.png";
 
-const BREW_COMMAND = "brew tap morapelker/hive && brew install --cask hive";
+const BREW_COMMAND = "brew install --cask hive-app";
 
 export default async function Home() {
   const [release, requestHeaders] = await Promise.all([
