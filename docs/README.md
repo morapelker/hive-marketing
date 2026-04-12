@@ -22,8 +22,7 @@ Link multiple repositories together so a single agent session sees your entire s
 Install Hive via Homebrew:
 
 ```bash
-brew tap morapelker/hive
-brew install --cask hive
+brew install --cask hive-app
 ```
 
 Or download the `.dmg` from [GitHub Releases](https://github.com/morapelker/hive/releases/latest).

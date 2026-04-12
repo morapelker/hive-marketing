@@ -19,8 +19,7 @@ No! Hive handles all the worktree complexity for you. If you can use git branche
 ### How do I install Hive?
 The easiest way is via Homebrew:
 ```bash
-brew tap morapelker/hive
-brew install --cask hive
+brew install --cask hive-app
 ```
 
 Alternatively, download the `.dmg` file from [GitHub Releases](https://github.com/morapelker/hive/releases).
