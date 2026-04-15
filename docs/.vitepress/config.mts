@@ -14,9 +14,25 @@ export default defineConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'Hive — AI Agent Orchestrator' }],
     ['meta', { property: 'og:description', content: 'Run Claude Code, OpenCode, and Codex sessions in parallel across projects. One window. Isolated branches. Zero tab chaos.' }],
-    ['meta', { property: 'og:image', content: 'https://raw.githubusercontent.com/morapelker/hive/main/docs/screenshots/hive-ss-1.png' }],
+    ['meta', { property: 'og:image', content: 'https://hive-ai.dev/opengraph-image.png' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
   ],
+
+  transformHead(context) {
+    const canonicalMap: Record<string, string> = {
+      'index.md': 'https://hive-ai.dev/docs',
+      'Docs.md': 'https://hive-ai.dev/docs',
+      'GUIDE.md': 'https://hive-ai.dev/docs',       // dedup → same canonical as Docs
+      'README.md': 'https://hive-ai.dev/docs/README',
+      'FAQ.md': 'https://hive-ai.dev/docs/FAQ',
+      'SHORTCUTS.md': 'https://hive-ai.dev/docs/SHORTCUTS',
+      'changelog/index.md': 'https://hive-ai.dev/docs/changelog',
+    };
+    const canonical = canonicalMap[context.page];
+    if (canonical) {
+      return [['link', { rel: 'canonical', href: canonical }]];
+    }
+  },
 
   themeConfig: {
     logo: '/icon.png',
