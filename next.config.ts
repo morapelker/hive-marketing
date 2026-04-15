@@ -53,22 +53,6 @@ const nextConfig: NextConfig = {
         destination: "/docs/README.html",
       },
       {
-        source: "/docs/SUMMARY",
-        destination: "/docs/SUMMARY.html",
-      },
-      {
-        source: "/docs/DEPLOY",
-        destination: "/docs/DEPLOY.html",
-      },
-      {
-        source: "/docs/session-title-generation",
-        destination: "/docs/session-title-generation.html",
-      },
-      {
-        source: "/docs/distribution-audit",
-        destination: "/docs/distribution-audit.html",
-      },
-      {
         source: "/docs/changelog",
         destination: "/docs/changelog/index.html",
       },
