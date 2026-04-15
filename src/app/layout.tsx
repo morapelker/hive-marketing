@@ -74,7 +74,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Hive",
-    url: "https://hive-ai.dev",
+    url: SITE_URL,
   },
 ];
 
