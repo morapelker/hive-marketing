@@ -14,7 +14,7 @@ export default defineConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'Hive — AI Agent Orchestrator' }],
     ['meta', { property: 'og:description', content: 'Run Claude Code, OpenCode, and Codex sessions in parallel across projects. One window. Isolated branches. Zero tab chaos.' }],
-    ['meta', { property: 'og:image', content: 'https://hive-ai.dev/opengraph-image.png' }],
+    ['meta', { property: 'og:image', content: 'https://hive-ai.dev/opengraph-image' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
   ],
 
