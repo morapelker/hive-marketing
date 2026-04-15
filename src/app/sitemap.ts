@@ -1,41 +1,41 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const lastModified = new Date("2026-04-15");
   return [
     {
       url: "https://hive-ai.dev",
-      lastModified: now,
+      lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: "https://hive-ai.dev/docs",
-      lastModified: now,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: "https://hive-ai.dev/docs/README",
-      lastModified: now,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: "https://hive-ai.dev/docs/FAQ",
-      lastModified: now,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: "https://hive-ai.dev/docs/SHORTCUTS",
-      lastModified: now,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: "https://hive-ai.dev/docs/changelog",
-      lastModified: now,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.6,
     },
